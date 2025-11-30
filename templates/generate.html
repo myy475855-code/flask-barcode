@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head><title>Barcode Generator</title></head>
+<body>
+<h2>Create Barcode</h2>
+
+{% if error %}
+<p style="color:red">{{ error }}</p>
+{% endif %}
+
+<form method="post">
+<input name="text" placeholder="Enter text / number"><br><br>
+
+<label>Type:</label>
+<select name="type">
+{% for t in types %}
+<option value="{{ t }}">{{ t }}</option>
+{% endfor %}
+</select><br><br>
+
+<button>Generate</button>
+</form>
+
+{% if filename %}
+<h3>Generated Barcode:</h3>
+<img src="{{ url_for('static', filename='barcodes/' + filename) }}" width="300"><br>
+<a href="{{ url_for('static', filename='barcodes/' + filename) }}" download>Download</a>
+{% endif %}
+</body>
+</html>

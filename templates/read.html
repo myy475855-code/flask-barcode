@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Barcode Reader</title></head>
+<body>
+<h2>Read Barcode</h2>
+
+{% if error %}
+<p style="color:red">{{ error }}</p>
+{% endif %}
+
+<form method="post" enctype="multipart/form-data">
+<input type="file" name="file"><br><br>
+<button>Read</button>
+</form>
+
+{% if result %}
+<h3>Decoded Data:</h3>
+<ul>
+{% for r in result %}
+<li>{{ r }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+</body>
+</html>
